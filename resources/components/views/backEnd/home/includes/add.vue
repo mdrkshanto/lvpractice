@@ -91,6 +91,7 @@
     </div>
     <div
       class="container"
+      v-if="(data >= 1 && data <= 10 && data !== true) || false"
     >
       <div class="input-group input-group-sm">
         <button
