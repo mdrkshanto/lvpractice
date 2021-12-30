@@ -91,7 +91,6 @@
     </div>
     <div
       class="container"
-      v-if="(data >= 1 && data <= 10 && data !== true) || false"
     >
       <div class="input-group input-group-sm">
         <button
@@ -104,13 +103,7 @@
           type="text"
           class="form-control form-control-sm col-1"
           v-model="data"
-          @input="
-            data >= 10
-              ? (data = 10)
-              : data <= 1
-              ? (data = 1)
-              : (data = '' ? (data = 1) : '')
-          "
+          @input="inputData"
         />
         <button
           class="btn btn-primary shadow-none btn-sm"
@@ -187,6 +180,15 @@ export default {
         this.form.bgImg = null;
         this.$refs.bgImg.value = null;
       });
+    },
+    inputData() {
+      if (this.data >= 10) {
+        this.data = 10;
+      } else if (this.data <= 1) {
+        this.data = 1;
+      } else {
+        this.data = 1;
+      }
     },
     reset() {
       this.form.name = null;

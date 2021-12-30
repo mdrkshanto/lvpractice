@@ -5600,13 +5600,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5637,6 +5630,15 @@ __webpack_require__.r(__webpack_exports__);
         _this.form.bgImg = null;
         _this.$refs.bgImg.value = null;
       });
+    },
+    inputData: function inputData() {
+      if (this.data >= 10) {
+        this.data = 10;
+      } else if (this.data <= 1) {
+        this.data = 1;
+      } else {
+        this.data = 1;
+      }
     },
     reset: function reset() {
       this.form.name = null;
@@ -39103,70 +39105,62 @@ var render = function () {
       ]),
     ]),
     _vm._v(" "),
-    (_vm.data >= 1 && _vm.data <= 10 && _vm.data !== true) || false
-      ? _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "input-group input-group-sm" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary shadow-none btn-sm",
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    _vm.data <= 1 ? "" : _vm.data--
-                  },
-                },
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "input-group input-group-sm" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary shadow-none btn-sm",
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                _vm.data <= 1 ? "" : _vm.data--
               },
-              [_c("i", { staticClass: "fas fa-minus" })]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.data,
-                  expression: "data",
-                },
-              ],
-              staticClass: "form-control form-control-sm col-1",
-              attrs: { type: "text" },
-              domProps: { value: _vm.data },
-              on: {
-                input: [
-                  function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.data = $event.target.value
-                  },
-                  function ($event) {
-                    _vm.data >= 10
-                      ? (_vm.data = 10)
-                      : _vm.data <= 1
-                      ? (_vm.data = 1)
-                      : (_vm.data =  false ? (0) : "")
-                  },
-                ],
+            },
+          },
+          [_c("i", { staticClass: "fas fa-minus" })]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.data,
+              expression: "data",
+            },
+          ],
+          staticClass: "form-control form-control-sm col-1",
+          attrs: { type: "text" },
+          domProps: { value: _vm.data },
+          on: {
+            input: [
+              function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.data = $event.target.value
               },
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary shadow-none btn-sm",
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    _vm.data >= 10 ? "" : _vm.data++
-                  },
-                },
+              _vm.inputData,
+            ],
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary shadow-none btn-sm",
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                _vm.data >= 10 ? "" : _vm.data++
               },
-              [_c("i", { staticClass: "fas fa-plus" })]
-            ),
-          ]),
-        ])
-      : _vm._e(),
+            },
+          },
+          [_c("i", { staticClass: "fas fa-plus" })]
+        ),
+      ]),
+    ]),
     _vm._v(" "),
     _vm.form.name &&
     _vm.form.focusTitle &&
