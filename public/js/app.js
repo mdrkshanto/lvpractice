@@ -5601,10 +5601,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+var maC = 60;
+var miC = 9;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      data: 1,
+      maxCount: maC,
+      minCount: miC,
+      data: miC,
       form: new Form({
         name: null,
         focusTitle: null,
@@ -5633,12 +5637,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     inputData: function inputData() {
-      if (this.data >= 10) {
-        this.data = 10;
-      } else if (this.data <= 1) {
-        this.data = 1;
+      if (this.data >= this.maxCount) {
+        this.data = this.maxCount;
+      } else if (this.data <= this.minCount) {
+        this.data = this.minCount;
       } else {
-        this.data = 1;
+        this.data = this.minCount;
       }
     },
     reset: function reset() {
@@ -39106,7 +39110,10 @@ var render = function () {
       ]),
     ]),
     _vm._v(" "),
-    (_vm.data >= 1 && _vm.data <= 10 && _vm.data !== true) || false
+    (_vm.data >= _vm.minCount &&
+      _vm.data <= _vm.maxCount &&
+      _vm.data !== true) ||
+    false
       ? _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "input-group input-group-sm" }, [
             _c(
@@ -39116,7 +39123,7 @@ var render = function () {
                 on: {
                   click: function ($event) {
                     $event.preventDefault()
-                    _vm.data <= 1 ? "" : _vm.data--
+                    _vm.data <= _vm.minCount ? "" : _vm.data--
                   },
                 },
               },
@@ -39155,7 +39162,7 @@ var render = function () {
                 on: {
                   click: function ($event) {
                     $event.preventDefault()
-                    _vm.data >= 10 ? "" : _vm.data++
+                    _vm.data >= _vm.maxCount ? "" : _vm.data++
                   },
                 },
               },

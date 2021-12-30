@@ -91,12 +91,12 @@
     </div>
     <div
       class="container"
-      v-if="(data >= 1 && data <= 10 && data !== true) || false"
+      v-if="(data >= minCount && data <= maxCount && data !== true) || false"
     >
       <div class="input-group input-group-sm">
         <button
           class="btn btn-primary shadow-none btn-sm"
-          @click.prevent="data <= 1 ? '' : data--"
+          @click.prevent="data <= minCount ? '' : data--"
         >
           <i class="fas fa-minus"></i>
         </button>
@@ -108,7 +108,7 @@
         />
         <button
           class="btn btn-primary shadow-none btn-sm"
-          @click.prevent="data >= 10 ? '' : data++"
+          @click.prevent="data >= maxCount ? '' : data++"
         >
           <i class="fas fa-plus"></i>
         </button>
@@ -152,10 +152,14 @@
   </div>
 </template>
 <script>
+let maC = 60;
+let miC = 9;
 export default {
   data() {
     return {
-      data: 1,
+      maxCount: maC,
+      minCount: miC,
+      data: miC,
       form: new Form({
         name: null,
         focusTitle: null,
@@ -183,12 +187,12 @@ export default {
       });
     },
     inputData() {
-      if (this.data >= 10) {
-        this.data = 10;
-      } else if (this.data <= 1) {
-        this.data = 1;
+      if (this.data >= this.maxCount) {
+        this.data = this.maxCount;
+      } else if (this.data <= this.minCount) {
+        this.data = this.minCount;
       } else {
-        this.data = 1;
+        this.data = this.minCount;
       }
     },
     reset() {
